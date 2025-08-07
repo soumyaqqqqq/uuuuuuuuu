@@ -1,0 +1,77 @@
+.landing-page {
+  padding: 20px;
+  background-color: #f8f9fe;
+}
+
+.welcome-banner {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to right, #6c63ff, #5f4ad4);
+  color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.welcome-banner .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-banner .left h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.welcome-banner .left .date {
+  font-size: 14px;
+  margin-top: 10px;
+  color: #e0e0ff;
+}
+
+.doctor-img {
+  height: 120px;
+}
+
+.cards-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  flex: 1;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.card h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.card p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.calendar-placeholder {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  color: #888;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
