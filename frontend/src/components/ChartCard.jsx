@@ -36,9 +36,12 @@ ChartJS.register(
 
 
 
-const chartOptions = {
+import { useMemo } from 'react';
+
+const baseChartOptions = {
   maintainAspectRatio: false,
   responsive: true,
+  animation: false,
   plugins: {
     legend: {
       position: 'bottom',
@@ -62,11 +65,14 @@ const chartOptions = {
 };
 
 const ChartCard = ({ title, type, data }) => {
-  const chartMap = {
-    pie: <Pie data={data} options={chartOptions} />,
-    bar: <Bar data={data} options={chartOptions} />,
-    line: <Line data={data} options={chartOptions} />
-  };
+  // Memoize options and data to prevent chartjs re-mounting
+  const chartOptions = useMemo(() => baseChartOptions, []);
+  const chartData = useMemo(() => data, [data]);
+
+  let chart = null;
+  if (type === 'pie') chart = <Pie data={chartData} options={chartOptions} />;
+  else if (type === 'bar') chart = <Bar data={chartData} options={chartOptions} />;
+  else if (type === 'line') chart = <Line data={chartData} options={chartOptions} />;
 
   return (
     <div style={{
@@ -77,14 +83,14 @@ const ChartCard = ({ title, type, data }) => {
       flex: '1',
       minWidth: '300px',
       maxWidth: '400px',
-      height: '100%', // Fill grid cell
+      height: '420px', // Fixed height to prevent layout shift
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-start',
     }}>
       <h4 style={{ marginBottom: '12px', fontSize: '16px', color: '#374151' }}>{title}</h4>
-      <div style={{ flex: 1, position: 'relative' }}>
-        {chartMap[type]}
+      <div style={{ flex: 1, position: 'relative', minHeight: 0 }}>
+        {chart}
       </div>
     </div>
   );
